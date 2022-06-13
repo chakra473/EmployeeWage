@@ -14,8 +14,7 @@ import random
 
 
 PRESENT = 1
-ABSENT = 0
-def uc1():
+def  employee_attendence():
     """
     Description:
         This method checks whether employee is present or absent
@@ -29,6 +28,7 @@ def uc1():
         return "EMPLOYEE IS PRESENT"
     else:
         return "EMPLOYEE IS ABSENT"
-print(uc1())
 
-    
+
+if __name__ =="__main__":
+    print(employee_attendence())
