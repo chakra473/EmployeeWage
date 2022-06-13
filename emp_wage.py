@@ -6,7 +6,7 @@
 
 @Last Modified by: Chakravarthy
 
-@Last Modified time: 2022-06-13 9:00:00
+@Last Modified time: 2022-06-13 17:22:00
 
 @Title : EMPLOYEE WAGE
 '''
@@ -198,6 +198,44 @@ def store_daily_wage():
     return daily_wage_list,total_salary
 
 
+def store_day_daily_wage():
+    """
+    Description:
+        This method calculates and stores wage of the employee daily for a month(total working days is 20)
+    Parameter:
+        None
+    Return:
+        Returns list of daily wages of employee worked in numbers(dict=>key:day,value:daily wage) and total salary (int)
+    """
+    total_salary = 0
+    total_emp_hrs = 0
+    total_working_days = 1
+    daily_wage_dict = {}
+    while total_emp_hrs <= MAX_HRS_IN_MONTH and total_working_days <= NUM_OF_WORKING_DAYS:
+        attendence=random.randrange(0,3)
+        if attendence == PRESENT:
+            emp_hrs = 8
+            salary = EMP_RATE_PER_HR * emp_hrs
+            total_emp_hrs += emp_hrs
+            daily_wage_dict[total_working_days] = salary
+        elif attendence == PART_TIME:
+            emp_hrs = 4
+            salary = EMP_RATE_PER_HR * emp_hrs
+            total_emp_hrs += emp_hrs
+            daily_wage_dict[total_working_days] = salary
+        else:
+            emp_hrs = 0
+            salary = EMP_RATE_PER_HR * emp_hrs
+            total_emp_hrs += emp_hrs
+            daily_wage_dict[total_working_days] = salary
+        
+        total_salary = total_emp_hrs * EMP_RATE_PER_HR
+        total_working_days+=1
+
+
+    return daily_wage_dict,total_salary
+
+
 if __name__ =="__main__":
     print(employee_attendence())
     print(daily_wage())
@@ -206,3 +244,4 @@ if __name__ =="__main__":
     print(wage_till_max_hrs_in_a_month())
     print(total_work_hrs())
     print(store_daily_wage())
+    print(store_day_daily_wage())
