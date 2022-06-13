@@ -15,7 +15,7 @@ import random
 
 PRESENT = 1
 ABSENT = 0
-def employee_attendence():
+def  employee_attendence():
     """
     Description:
         This method checks whether employee is present or absent
@@ -33,4 +33,3 @@ def employee_attendence():
 
 if __name__ =="__main__":
     print(employee_attendence())
-    
