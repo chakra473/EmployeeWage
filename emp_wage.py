@@ -18,6 +18,7 @@ ABSENT = 0
 PART_TIME = 2
 EMP_RATE_PER_HR = 20
 NUM_OF_WORKING_DAYS = 20
+MAX_HRS_IN_MONTH = 100
 def  employee_attendence():
     """
     Description:
@@ -104,7 +105,35 @@ def wage_for_a_month():
         salary = emp_hrs * EMP_RATE_PER_HR
         total_salary += salary
     return total_salary
-        
+
+
+def wage_till_max_hrs_in_a_month():
+    """
+    Description:
+        This method calculates wage of the employee for a month(total working days is 20)
+    Parameter:
+        None
+    Return:
+        Returns total salary,total hours employee worked,total days employee worked in numbers(int)
+    """
+    total_salary = 0
+    total_emp_hrs = 0
+    total_working_days = 0
+    while total_emp_hrs <= MAX_HRS_IN_MONTH and total_working_days < NUM_OF_WORKING_DAYS:
+        attendence=random.randrange(0,3)
+        if attendence == PRESENT:
+            emp_hrs = 8
+        elif attendence == PART_TIME:
+            emp_hrs = 4
+        else:
+            emp_hrs = 0
+        total_emp_hrs += emp_hrs
+        total_salary = total_emp_hrs * EMP_RATE_PER_HR
+        total_working_days+=1
+
+
+    return total_salary,total_emp_hrs,total_working_days
+
 
 
 if __name__ =="__main__":
@@ -112,3 +141,4 @@ if __name__ =="__main__":
     print(daily_wage())
     print(part_time_wage())
     print(wage_for_a_month())
+    print(wage_till_max_hrs_in_a_month())
