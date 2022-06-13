@@ -29,6 +29,6 @@ def  employee_attendence():
         return "EMPLOYEE IS PRESENT"
     else:
         return "EMPLOYEE IS ABSENT"
-print(uc1())
+print(employee_attendence())
 
     
