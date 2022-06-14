@@ -13,22 +13,8 @@
 import random
 
 
-PRESENT = 1
-def  employee_attendence():
-    """
-    Description:
-        This method checks whether employee is present or absent
-    Parameter:
-        None
-    Return:
-        Returns string
-    """
-    attendence =random.randrange(0,2)
-    if attendence == PRESENT:
-        return "EMPLOYEE IS PRESENT"
-    else:
-        return "EMPLOYEE IS ABSENT"
-
-
-if __name__ =="__main__":
-    print(employee_attendence())
+attendence =random.randint(0,1)
+if attendence == 1:
+    print("EMPLOYEE IS PRESENT")
+else:
+    print("EMPLOYEE IS ABSENT")
