@@ -12,9 +12,10 @@ import random
 
 
 WAGE_PER_HOUR = 20
-emp_work_hour = 0
+total_emp_work_hour = 0
 emp_daily_wage = 0
 total_month_wage = 0
+
 
 
 # Checking that employee is present for full time , part-time or absent
@@ -71,13 +72,18 @@ def switch_case(check):
         1: present_for_partTime(),
         2: present_for_fullTime(),  
     }
-    return switcher.get(check, "")
+    return switcher.get(check)
 
 
 if __name__ == "__main__":
-    for day in range(20):
+    day = 0
+    while day < 20 and total_emp_work_hour <= 100:   #no of working days is 20 and maximum working hours is 100
         check = random.randint(0, 2)
-        result = switch_case(check)  
+        result = switch_case(check) 
         emp_daily_wage = result * WAGE_PER_HOUR
+        total_emp_work_hour +=result
         total_month_wage += emp_daily_wage  # Adding daily wage to total wages
-    print(f"Employee total month wage for 20 days is : {total_month_wage}")
+        day = day + 1
+    print(f"EMPLOYEE TOTAL WAGE IS {total_month_wage}")
+    print(f"TOTAL WORKING HOURS OF THE EMPLOYEE IS {total_emp_work_hour}")
+    print(f"TOTAL WORKING DAYS OF THE EMPLOYEE IS {day}")
