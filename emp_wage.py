@@ -1,4 +1,4 @@
-#WELCOME TO EMPLOYEE WAGE PROBLEM
+# WELCOME TO EMPLOYEE WAGE PROBLEM
 '''
 @Author: Chakravarthy
 @Date: 2022-06-13 9:00:00
@@ -9,7 +9,6 @@
 # Importing random modules
 
 import random
-
 
 WAGE_PER_HOUR = 20
 emp_work_hour = 0
@@ -69,15 +68,21 @@ def switch_case(check):
     switcher = {
         0: absent(),
         1: present_for_partTime(),
-        2: present_for_fullTime(),  
+        2: present_for_fullTime(),
     }
     return switcher.get(check, "")
 
 
 if __name__ == "__main__":
-    for day in range(20):
+    day = 0
+    while day < 20:
         check = random.randint(0, 2)
-        result = switch_case(check)  
-        emp_daily_wage = result * WAGE_PER_HOUR
-        total_month_wage += emp_daily_wage  # Adding daily wage to total wages
+        result = switch_case(check)
+        if result == 0:
+            emp_daily_wage = result * WAGE_PER_HOUR
+            total_month_wage += emp_daily_wage
+        else:
+            emp_daily_wage = result * WAGE_PER_HOUR
+            total_month_wage += emp_daily_wage  # Adding daily wage to total wages
+            day += 1
     print(f"Employee total month wage for 20 days is : {total_month_wage}")
