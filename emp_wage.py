@@ -1,13 +1,8 @@
 #WELCOME TO EMPLOYEE WAGE PROBLEM
-'''
-@Author: Chakravarthy
-
+'''@Author: Chakravarthy
 @Date: 2022-06-13 9:00:00
-
 @Last Modified by: Chakravarthy
-
 @Last Modified time: 2022-06-13 9:00:00
-
 @Title : EMPLOYEE WAGE
 '''
 import random
