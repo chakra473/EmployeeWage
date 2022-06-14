@@ -36,11 +36,13 @@ def get_work_hours(check):
 
 if __name__ == "__main__":
     day = 0
+    daily_wage_list = []
     while day < 20 and total_emp_work_hour <= 100:  # no of working days is 20 and maximum working hours is 100
         check = random.randint(0, 2)
         result = get_work_hours(check)
         if result != 0:
             emp_daily_wage = result * WAGE_PER_HOUR
+            daily_wage_list.append(emp_daily_wage)
             total_emp_work_hour += result
             total_month_wage += emp_daily_wage  # Adding daily wage to total wages
             day = day + 1
@@ -51,6 +53,7 @@ if __name__ == "__main__":
         total_emp_work_hour -= a
         wage = a * total_emp_work_hour  # Calculate extra hours wage
         total_month_wage -= wage  # Minus extra hours wage from emp total wage
+    print(f"LIST OF EMPLOYEE DAILY WAGE FOR WHOLE MONTH IS {daily_wage_list}")
     print(f"EMPLOYEE TOTAL WAGE IS {total_month_wage}")
     print(f"TOTAL WORKING HOURS OF THE EMPLOYEE IS {total_emp_work_hour}")
     print(f"TOTAL WORKING DAYS OF THE EMPLOYEE IS {day}")
