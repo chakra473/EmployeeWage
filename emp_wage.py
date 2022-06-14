@@ -1,144 +1,83 @@
 #WELCOME TO EMPLOYEE WAGE PROBLEM
 '''
 @Author: Chakravarthy
-
 @Date: 2022-06-13 9:00:00
-
 @Last Modified by: Chakravarthy
-
 @Last Modified time: 2022-06-13 9:00:00
-
 @Title : EMPLOYEE WAGE
 '''
+# Importing random modules
+
 import random
 
 
-PRESENT = 1
-ABSENT = 0
-PART_TIME = 2
-EMP_RATE_PER_HR = 20
-NUM_OF_WORKING_DAYS = 20
-MAX_HRS_IN_MONTH = 100
-def  employee_attendence():
+WAGE_PER_HOUR = 20
+emp_work_hour = 0
+emp_daily_wage = 0
+total_month_wage = 0
+
+
+# Checking that employee is present for full time , part-time or absent
+def present_for_fullTime():
     """
-    Description:
-        This method checks whether employee is present or absent
-    Parameter:
-        None
-    Return:
-        Returns string
+        Description:
+            This function is set employee work hours as 8 for full time presence of employee
+        Parameter:
+            None
+        Return:
+            Employee Work Hours
     """
-    attendence =random.randrange(0,2)
-    if attendence == PRESENT:
-        return "EMPLOYEE IS PRESENT"
-    else:
-        return "EMPLOYEE IS ABSENT"
+    emp_work_hour = 8
+    return emp_work_hour
 
 
-def daily_wage():
+def present_for_partTime():
     """
-    Description:
-        This method calculates daily wage of the employee
-    Parameter:
-        None
-    Return:
-        Returns salary in number(int)
+        Description:
+            This function is set employee work hours as 4 for part-time presence of employee
+        Parameter:
+            None
+        Return:
+            Employee Work Hours
     """
-    attendence=random.randrange(0,2)
-    if attendence == PRESENT:
-        emp_rate_per_hr = 20
-        emp_hrs = 8
-        salary = emp_rate_per_hr * emp_hrs
-        return salary
-    else:
-        salary = 0
-        return salary
+    emp_work_hour = 4
+    return emp_work_hour
 
 
-def part_time_wage():
+def absent():
     """
-    Description:
-        This method calculates daily wage of the employee both full time and part time 
-    Parameter:
-        None
-    Return:
-        Returns salary in number(int)
+        Description:
+            This function is set employee work hours as 0 for absence of employee
+        Parameter:
+            None
+        Return:
+            Employee Work Hours
     """
-    attendence=random.randrange(0,3)
-    if attendence == PRESENT:
-        emp_rate_per_hr = 20
-        emp_hrs = 8
-        salary = emp_rate_per_hr * emp_hrs
-        print("EMPLOYEE IS PRESENT FULL TIME")
-        return salary
-    elif attendence == PART_TIME:
-        emp_rate_per_hr = 20
-        emp_hrs = 4
-        salary = emp_rate_per_hr * emp_hrs
-        print("EMPLOYEE IS PRESENT PART TIME")
-        return salary
-
-    else:
-        salary = 0
-        print("EMPLOYEE IS ABSENT")
-        return salary
+    emp_work_hour = 0
+    return emp_work_hour
 
 
-def wage_for_a_month():
+def switch_case(check):
     """
-    Description:
-        This method calculates wage of the employee for a month(total working days is 20)
-    Parameter:
-        None
-    Return:
-        Returns total salary in number(int)
+        Description:
+            This function is used for implementing switch case for employee attendence
+        Parameter:
+            This function takes one integer parameter
+        Return:
+            It returns function value based on choice
     """
-    total_salary = 0
-    for i in range(NUM_OF_WORKING_DAYS):
-        attendence=random.randrange(0,3)
-        if attendence == PRESENT:
-            emp_hrs = 8
-        elif attendence == PART_TIME:
-            emp_hrs = 4
-        else:
-            emp_hrs = 0
-        salary = emp_hrs * EMP_RATE_PER_HR
-        total_salary += salary
-    return total_salary
+    switcher = {
+        0: absent(),
+        1: present_for_partTime(),
+        2: present_for_fullTime(),  
+    }
+    return switcher.get(check, "")
 
 
-def wage_till_max_hrs_in_a_month():
-    """
-    Description:
-        This method calculates wage of the employee for a month(total working days is 20)
-    Parameter:
-        None
-    Return:
-        Returns total salary,total hours employee worked,total days employee worked in numbers(int)
-    """
-    total_salary = 0
-    total_emp_hrs = 0
-    total_working_days = 0
-    while total_emp_hrs <= MAX_HRS_IN_MONTH and total_working_days < NUM_OF_WORKING_DAYS:
-        attendence=random.randrange(0,3)
-        if attendence == PRESENT:
-            emp_hrs = 8
-        elif attendence == PART_TIME:
-            emp_hrs = 4
-        else:
-            emp_hrs = 0
-        total_emp_hrs += emp_hrs
-        total_salary = total_emp_hrs * EMP_RATE_PER_HR
-        total_working_days+=1
-
-
-    return total_salary,total_emp_hrs,total_working_days
-
-
-
-if __name__ =="__main__":
-    print(employee_attendence())
-    print(daily_wage())
-    print(part_time_wage())
-    print(wage_for_a_month())
-    print(wage_till_max_hrs_in_a_month())
+if __name__ == "__main__":
+    for day in range(20):
+        check = random.randint(0, 2)
+        result = switch_case(check)  
+        emp_daily_wage = result * WAGE_PER_HOUR
+        total_month_wage += emp_daily_wage  # Adding daily wage to total wages
+    print(f"Employee total month wage for 20 days is : {total_month_wage}")
