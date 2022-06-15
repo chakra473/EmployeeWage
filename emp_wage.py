@@ -4,7 +4,7 @@
 @Date: 2022-06-13 9:00:00
 @Last Modified by: Chakravarthy
 @Last Modified time: 2022-06-13 9:00:00
-@Title : EMPLOYEE WAGE
+@Title : python code for calculating EMPLOYEE WAGE
 '''
 # Importing random modules
 
@@ -75,14 +75,16 @@ def switch_case(check):
 
 if __name__ == "__main__":
     day = 0
+    working_day=0
     while day < 20:
         check = random.randint(0, 2)
         result = switch_case(check)
         if result == 0:
-            emp_daily_wage = result * WAGE_PER_HOUR
-            total_month_wage += emp_daily_wage
+            day+=1
         else:
             emp_daily_wage = result * WAGE_PER_HOUR
             total_month_wage += emp_daily_wage  # Adding daily wage to total wages
             day += 1
-    print(f"Employee total month wage for 20 days is : {total_month_wage}")
+            working_day+=1
+    print(f"Employee total month wage for 20 days is : {total_month_wage}\nTotal working days of the employee is : {working_day}")
+    
