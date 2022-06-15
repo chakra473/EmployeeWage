@@ -4,7 +4,7 @@
 @Date: 2022-06-13 9:00:00
 @Last Modified by: Chakravarthy
 @Last Modified time: 2022-06-13 9:00:00
-@Title : EMPLOYEE WAGE
+@Title :python code for calculating EMPLOYEE WAGE
 '''
 # Importing random modules
 
@@ -77,13 +77,23 @@ def switch_case(check):
 
 if __name__ == "__main__":
     day = 0
+    working_day=0
     while day < 20 and total_emp_work_hour <= 100:   #no of working days is 20 and maximum working hours is 100
         check = random.randint(0, 2)
         result = switch_case(check) 
-        emp_daily_wage = result * WAGE_PER_HOUR
-        total_emp_work_hour +=result
-        total_month_wage += emp_daily_wage  # Adding daily wage to total wages
-        day = day + 1
+        if result != 0:
+            emp_daily_wage = result * WAGE_PER_HOUR
+            total_emp_work_hour +=result
+            total_month_wage += emp_daily_wage  # Adding daily wage to total wages
+            day+=1
+            working_day+=1
+        else:
+            day+=1
+    if total_emp_work_hour > 100:  # Checking that hours are more than 100 or not
+        extra_hours = total_emp_work_hour - 100
+        total_emp_work_hour -= extra_hours
+        wage = extra_hours * total_emp_work_hour  # Calculate extra hours wage
+        total_month_wage -= wage
     print(f"EMPLOYEE TOTAL WAGE IS {total_month_wage}")
     print(f"TOTAL WORKING HOURS OF THE EMPLOYEE IS {total_emp_work_hour}")
-    print(f"TOTAL WORKING DAYS OF THE EMPLOYEE IS {day}")
+    print(f"TOTAL WORKING DAYS OF THE EMPLOYEE IS {working_day}")
