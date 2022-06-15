@@ -36,8 +36,9 @@ def get_work_hours(check):
 
 if __name__ == "__main__":
     day = 1
+    working_days = 0
     daily_wage_dict = {}
-    while day < 20 and total_emp_work_hour <= 100:  # no of working days is 20 and maximum working hours is 100
+    while day <= 20 and total_emp_work_hour <= 100:  # no of working days is 20 and maximum working hours is 100
         check = random.randint(0, 2)
         result = get_work_hours(check)
         if result != 0:
@@ -46,16 +47,19 @@ if __name__ == "__main__":
             total_emp_work_hour += result
             total_month_wage += emp_daily_wage  # Adding daily wage to total wages
             day += 1
+            working_days+=1
         else:
-            pass
+            daily_wage_dict[day] = 0
+            day += 1
     if total_emp_work_hour > 100:  # Checking that hours are more than 100 or not
-        a = total_emp_work_hour - 100
-        total_emp_work_hour -= a
-        wage = a * total_emp_work_hour  # Calculate extra hours wage
+        extra_hours = total_emp_work_hour - 100
+        total_emp_work_hour -= extra_hours
+        wage = extra_hours * total_emp_work_hour  # Calculate extra hours wage
         total_month_wage -= wage  # Minus extra hours wage from emp total wage
+        print(f"Extra hours that employee worked {extra_hours}")# Minus extra hours wage from emp total wage
     print(" Day  : DailyWage")
     for i in sorted(daily_wage_dict):  # sorting dictionary by key
         print(f"Day {i} : {daily_wage_dict[i]}")
     print(f"EMPLOYEE TOTAL WAGE IS {total_month_wage}")
     print(f"TOTAL WORKING HOURS OF THE EMPLOYEE IS {total_emp_work_hour}")
-    print(f"TOTAL WORKING DAYS OF THE EMPLOYEE IS {day-1}")
+    print(f"TOTAL WORKING DAYS OF THE EMPLOYEE IS {working_days}")
